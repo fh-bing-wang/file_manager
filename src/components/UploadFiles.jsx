@@ -3,8 +3,8 @@ import { useCallback, useState } from "react";
 const UploadFiles = () => {
 	const [file, setFile] = useState(null);
 	const setNewFile = useCallback((e) => {
-		console.log(e.target.value);
-		setFile(e.target.files[0]);
+		const localFile = e.target.files[0];
+		setFile(localFile);
 	}, []);
 
 	const upload = useCallback((e) => {
@@ -12,8 +12,11 @@ const UploadFiles = () => {
 
 		const formData = new FormData();
     	formData.append("file", file);
-		console.log('file: ', file);
-		console.log('formData: ', formData);
+
+		fetch(`/upload/${file.name}`, {
+			method: "post",
+			body: file,
+		});
 	}, [file]);
 
 	return (
