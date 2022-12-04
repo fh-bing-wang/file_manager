@@ -21,5 +21,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: yarn
+          cache-dependency-path: ./
+      - name: clean cache
+        run: npm cache clean --force
+      - name: install
+        run: |
+          rm -rf node_modules
+          yarn install --frozen-lockfile
       - name: test
         run: yarn test
