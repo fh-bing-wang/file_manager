@@ -4,7 +4,7 @@ const ShowFiles = () => {
     const [urls, setUrls] = useState([]);
 
     useEffect(() => {
-        fetch("/api")
+        fetch("http://127.0.0.1:3001/api")
             .then((res) => res.json())
             .then((data) => {
                 console.log(data.response);

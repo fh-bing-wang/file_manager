@@ -13,7 +13,7 @@ const UploadFiles = () => {
 		const formData = new FormData();
     	formData.append("file", file);
 
-		fetch(`/upload/${file.name}`, {
+		fetch(`http://127.0.0.1:3001/upload/${file.name}`, {
 			method: "post",
 			body: file,
 		});
